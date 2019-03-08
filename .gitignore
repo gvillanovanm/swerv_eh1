@@ -1,2 +1,4 @@
+*.vcd
+*.log
 configs/snapshots
 work
