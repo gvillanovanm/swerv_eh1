@@ -33,7 +33,7 @@ GCC_PREFIX = riscv64-unknown-elf
 
 # Define test name
 ifeq ($(strip $(ASM_TEST)),)
-	ASM_TEST = hello_world2
+	ASM_TEST = hello_world
 endif
 
 # Define test name
@@ -55,6 +55,13 @@ all: clean verilator
 
 clean:
 	rm -rf obj_dir *.hex build
+	rm -rf *.cpp.s
+	rm -rf *.dis
+	rm -rf *.exe
+	rm -rf *.o
+	rm -rf *.s
+	rm -rf *.tbl
+
 
 verilator: ${RV_ROOT}/configs/snapshots/$(snapshot)/common_defines.vh
 	$(VERILATOR) '-UASSERT_ON' --cc -CFLAGS ${CFLAGS} $(defines) $(includes) ${RV_ROOT}/configs/snapshots/$(snapshot)/common_defines.vh \
